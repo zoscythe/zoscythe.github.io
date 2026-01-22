@@ -3,13 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>Yiming Wang</title>
-  <link rel="stylesheet" href="/style.css" />
+
+  <!-- IMPORTANT: relative path + cache buster -->
+  <link rel="stylesheet" href="style.css?v=6" />
 </head>
 
 <body>
   <main class="container">
 
+    <!-- ================= Header / Navigation ================= -->
     <header class="header">
       <nav class="nav">
         <a href="/">Home</a>
@@ -19,6 +23,7 @@
       </nav>
     </header>
 
+    <!-- ================= Hero ================= -->
     <section class="hero">
       <h1>Yiming Wang</h1>
       <p class="tagline">
@@ -26,8 +31,76 @@
       </p>
     </section>
 
-    <section class="section">
+    <!-- ================= About ================= -->
+    <section class="section" id="about">
       <h2>About</h2>
       <p>
-        I am an undergraduate mathematics student interested in a
+        I am an undergraduate mathematics student at the University of Regensburg.
+        My main interests are algebraic geometry and homotopy theory.
+        This page collects notes, ongoing projects, and contact information.
+      </p>
+    </section>
+
+    <!-- ================= Research ================= -->
+    <section class="section" id="research">
+      <h2>Research Interests</h2>
+      <ul class="list">
+        <li>
+          <span>Algebraic geometry and derived methods</span>
+          <span class="meta">focus</span>
+        </li>
+        <li>
+          <span>Stable homotopy theory</span>
+          <span class="meta">ongoing</span>
+        </li>
+        <li>
+          <span>Goodwillie calculus</span>
+          <span class="meta gold">active</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ================= Notes ================= -->
+    <section class="section" id="notes">
+      <h2>Notes</h2>
+      <ul class="list">
+        <li>
+          <a href="#">Algebraic Geometry Notes</a>
+          <span class="meta gold">ongoing</span>
+        </li>
+        <li>
+          <a href="#">Homotopy Theory Notes</a>
+          <span class="meta">draft</span>
+        </li>
+        <li>
+          <a href="#">Algebraic Number Theory Notes</a>
+          <span class="meta">planned</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ================= Contact ================= -->
+    <section class="section" id="contact">
+      <h2>Contact</h2>
+      <ul class="list">
+        <li>
+          <a href="mailto:you@example.com">you@example.com</a>
+          <span class="meta">email</span>
+        </li>
+        <li>
+          <a href="https://github.com/alyate">github.com/alyate</a>
+          <span class="meta">github</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ================= Footer ================= -->
+    <footer class="footer">
+      © 2026 Yiming Wang
+    </footer>
+
+  </main>
+</body>
+</html>
+
 
