@@ -1,23 +1,33 @@
 /* ---------- Color System ---------- */
-
 :root {
   /* neutrals */
-  --bg: #f9fbfd;
-  --text: #2b2b2b;
-  --muted: #6b7280;
-  --line: #e6eaf0;
+  --bg: #f9fbfd;          /* very light blue-white */
+  --paper: #ffffff;       /* content surface */
+  --text: #2b2b2b;        /* main text */
+  --muted: #6b7280;       /* secondary text */
+  --line: #e6eaf0;        /* separators */
+  --shadow: rgba(17, 24, 39, 0.04);
 
   /* accents */
   --blue: #b8d9f0;        /* baby blue */
-  --blue-deep: #7fb3d5;
-  --purple: #7a6c9d;      /* muted purple */
-  --gold: #c2a86d;        /* soft gold */
+  --blue-deep: #7fb3d5;   /* link hover / focus */
+  --purple: #7a6c9d;      /* section headings */
+  --gold: #c2a86d;        /* meta highlight */
+
+  /* sizes */
+  --maxw: 760px;
+  --padx: 22px;
 }
 
-/* ---------- Base ---------- */
-
-* {
+/* ---------- Reset / Base ---------- */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
 }
 
 body {
@@ -25,45 +35,106 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
     "Inter",
     "PingFang SC",
     "Noto Sans SC",
-    system-ui,
-    -apple-system,
+    "Helvetica Neue",
+    Arial,
     sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* A very subtle MUJI-like “paper” gradient */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(1200px 600px at 20% 10%, rgba(184, 217, 240, 0.28), transparent 60%),
+    radial-gradient(900px 500px at 85% 0%, rgba(184, 217, 240, 0.16), transparent 55%),
+    linear-gradient(to bottom, rgba(255,255,255,0.65), rgba(255,255,255,0.35));
+  pointer-events: none;
+  z-index: -1;
 }
 
 /* ---------- Layout ---------- */
-
 .container {
-  max-width: 760px;
+  max-width: var(--maxw);
   margin: 0 auto;
-  padding: 96px 22px 72px;
+  padding: 96px var(--padx) 72px;
+}
+
+/* Optional: if you wrap content in <main>, keep it centered */
+main {
+  display: block;
+}
+
+/* ---------- Links ---------- */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--blue-deep);
+}
+
+a:focus-visible {
+  outline: 2px solid rgba(127, 179, 213, 0.55);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* For long-form text links (inside paragraphs) */
+.section p a {
+  color: var(--text);
+  border-bottom: 1px solid rgba(127, 179, 213, 0.45);
+  padding-bottom: 1px;
+}
+
+.section p a:hover {
+  color: var(--blue-deep);
+  border-bottom-color: rgba(127, 179, 213, 0.75);
 }
 
 /* ---------- Navigation ---------- */
+.header {
+  margin-bottom: 72px;
+}
 
 .nav {
   display: flex;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 18px;
   font-size: 14px;
-  margin-bottom: 72px;
+  color: var(--muted);
 }
 
 .nav a {
   color: var(--muted);
-  text-decoration: none;
+  padding: 2px 0;
 }
 
 .nav a:hover {
   color: var(--purple);
 }
 
-/* ---------- Hero ---------- */
+/* Optional "active" class if you add it later:
+   <a class="active" ...> */
+.nav a.active {
+  color: var(--text);
+  border-bottom: 1px solid rgba(194, 168, 109, 0.7);
+}
 
+/* ---------- Hero ---------- */
 .hero h1 {
   font-size: 38px;
-  font-weight: 500;
+  font-weight: 520;
   margin: 0 0 12px;
   letter-spacing: 0.2px;
 }
@@ -71,31 +142,37 @@ body {
 .tagline {
   margin: 0;
   color: var(--muted);
-  line-height: 1.8;
+  line-height: 1.85;
+  max-width: 52ch;
 }
 
 /* ---------- Sections ---------- */
-
 .section {
   margin-top: 64px;
 }
 
 .section h2 {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 13px;
+  font-weight: 650;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.10em;
   color: var(--purple);
-  margin-bottom: 18px;
+  margin: 0 0 18px;
 }
 
 .section p {
   margin: 0;
-  line-height: 1.9;
+  line-height: 1.95;
+  color: var(--text);
+  max-width: 68ch;
+}
+
+/* Subtle paragraph spacing if you add multiple <p> later */
+.section p + p {
+  margin-top: 14px;
 }
 
 /* ---------- Lists ---------- */
-
 .list {
   list-style: none;
   padding: 0;
@@ -112,17 +189,20 @@ body {
   border-bottom: 1px solid var(--line);
 }
 
-.list a {
+.list li a {
   color: var(--text);
-  text-decoration: none;
 }
 
-.list a:hover {
+.list li a:hover {
   color: var(--blue-deep);
 }
 
-/* ---------- Meta ---------- */
+/* When list items wrap on small screens */
+.list li > *:first-child {
+  min-width: 0;
+}
 
+/* ---------- Meta ---------- */
 .meta {
   font-size: 13px;
   color: var(--muted);
@@ -133,10 +213,73 @@ body {
   color: var(--gold);
 }
 
-/* ---------- Footer ---------- */
+/* Optional subtle pill style for meta, MUJI-ish */
+.meta.pill {
+  padding: 2px 8px;
+  border: 1px solid rgba(230, 234, 240, 0.95);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.65);
+}
 
+/* ---------- Small UI Elements ---------- */
+hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 28px 0;
+}
+
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "JetBrains Mono", monospace;
+}
+
+pre {
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: auto;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+/* ---------- Footer ---------- */
 .footer {
   margin-top: 80px;
   font-size: 13px;
   color: var(--muted);
 }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+  .container {
+    padding: 72px 18px 56px;
+  }
+
+  .header {
+    margin-bottom: 56px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .section {
+    margin-top: 52px;
+  }
+
+  .list li {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .meta {
+    white-space: normal;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+  }
+}
+
