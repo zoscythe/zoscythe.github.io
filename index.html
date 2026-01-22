@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="top">
+      <nav class="nav">
+        <a href="/">Home</a>
+        <a href="#notes">Notes</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h1>Your Name</h1>
+      <p class="sub">Mathematics student · Algebraic geometry · Homotopy theory</p>
+    </section>
+
+    <section class="block">
+      <h2>About</h2>
+      <p>
+        A short, calm description. Keep it plain, factual, and readable.
+      </p>
+    </section>
+
+    <section class="block" id="notes">
+      <h2>Notes</h2>
+      <ul class="list">
+        <li><a href="#">Algebraic Geometry notes</a> <span class="meta">ongoing</span></li>
+        <li><a href="#">Number Theory notes</a> <span class="meta">draft</span></li>
+      </ul>
+    </section>
+
+    <section class="block" id="contact">
+      <h2>Contact</h2>
+      <ul class="list">
+        <li><a href="mailto:you@example.com">you@example.com</a></li>
+        <li><a href="https://github.com/yourname">GitHub</a></li>
+      </ul>
+    </section>
+
+    <footer class="foot">
+      <span>© <span id="y"></span> Your Name</span>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
