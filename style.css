@@ -282,4 +282,38 @@ pre {
     scroll-behavior: auto !important;
   }
 }
+/* ---------- Talks: match list style, align meta cleanly ---------- */
+
+/* Keep li as your existing two-column flex row. We only refine the right column. */
+.list li.talk {
+  /* inherits: display:flex; justify-content:space-between; align-items:baseline; gap:16px; */
+}
+
+/* Title behaves like your other list links */
+.list li.talk .talk-title {
+  color: var(--text);
+  min-width: 0;             /* allows wrapping in flex context */
+}
+
+.list li.talk .talk-title:hover {
+  color: var(--blue-deep);
+}
+
+/* Meta row: controlled spacing, no whitespace artifacts */
+.list li.talk .meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end; /* right-align within the right column */
+  gap: 0.45em;               /* consistent spacing between meta chunks */
+  text-align: right;
+}
+
+/* On small screens your list li already becomes column; make meta behave nicely */
+@media (max-width: 640px) {
+  .list li.talk .meta-row {
+    justify-content: flex-start;
+    text-align: left;
+  }
+}
+
 
