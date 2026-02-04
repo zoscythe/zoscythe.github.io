@@ -4,7 +4,58 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Notes · Yiming Wang</title>
-  <link rel="stylesheet" href="style.css?v=7" />
+
+  <!-- If you want to keep your external stylesheet, delete this <style> block
+       and copy the CSS parts into style.css. -->
+  <style>
+    /* --- Layout shell (minimal) --- */
+    body { margin: 0; }
+    .container { max-width: 860px; margin: 0 auto; padding: 24px; }
+    .header { margin-bottom: 24px; }
+    .nav { display: flex; gap: 16px; }
+    .nav a { text-decoration: none; }
+    .nav a.active { text-decoration: underline; }
+
+    .hero { margin: 24px 0; }
+    .tagline { margin: 8px 0 0; }
+
+    .section { margin: 32px 0; }
+    .list { list-style: none; padding: 0; margin: 0; }
+    .list > li { margin: 14px 0; }
+
+    /* --- Talk layout --- */
+    .talk-main a { text-decoration: none; }
+    .talk-main { line-height: 1.35; }
+
+    /* This is the important part: alignment + controlled spacing */
+    .talk-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45em;          /* horizontal spacing between items */
+      align-items: baseline;
+      margin-top: 4px;
+    }
+
+    /* Make all meta items visually consistent */
+    .meta {
+      font-size: 0.95rem;
+      opacity: 0.75;
+      white-space: nowrap; /* prevents awkward breaks inside one meta item */
+    }
+
+    .meta.gold {
+      opacity: 1;
+      font-weight: 600;
+    }
+
+    /* Optional: make talk items look more “blocky” */
+    .list.talks > li {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .footer { margin-top: 40px; opacity: 0.7; }
+  </style>
 </head>
 
 <body>
@@ -21,75 +72,64 @@
 
     <section class="hero">
       <h1>Notes</h1>
-      <p class="tagline">
-        Notes and Scripts
-      </p>
+      <p class="tagline">Notes and Scripts</p>
     </section>
 
     <section class="section">
-  <h2>Course Notes</h2>
-  <ul class="list">
-    <li>
-      <a href="notes/algebraic-geometry.pdf">Algebraic Geometry WS25/26</a>
-      <span class="meta gold">ongoing</span>
-    </li>
-    <li>
-      <a href="notes/algebraic-k-theory.pdf">Algebraic K-theory SS25</a>
-      <span class="meta">maintained</span>
-    </li>
-  </ul>
-</section>
+      <h2>Course Notes</h2>
+      <ul class="list">
+        <li>
+          <a href="notes/algebraic-geometry.pdf">Algebraic Geometry WS25/26</a>
+          <span class="meta gold">ongoing</span>
+        </li>
+        <li>
+          <a href="notes/algebraic-k-theory.pdf">Algebraic K-theory SS25</a>
+          <span class="meta">maintained</span>
+        </li>
+      </ul>
+    </section>
 
     <section class="section">
-  <h2>Talks</h2>
-  <ul class="list">
+      <h2>Talks</h2>
 
-    <li>
-      <div class="talk-main">
-        <a href="notes/talks/norm-maps-tate.pdf">
-          Norm Maps and the Tate Construction
-        </a>
-      </div>
+      <!-- Add class "talks" so the optional border styling applies -->
+      <ul class="list talks">
 
-      <div class="talk-meta">
-        <span class="meta">Goodwillie Calculus Seminar,</span>
-        <span class="meta">University of Regensburg,</span>
-        <span class="meta gold">Dec 2025</span>
-        <span class="meta">
-        </span>
-      </div>
-    </li>
+        <li>
+          <div class="talk-main">
+            <a href="notes/talks/norm-maps-tate.pdf">Norm Maps and the Tate Construction</a>
+          </div>
+          <div class="talk-meta">
+            <span class="meta">Goodwillie Calculus Seminar,</span>
+            <span class="meta">University of Regensburg,</span>
+            <span class="meta gold">Dec 2025</span>
+          </div>
+        </li>
 
-    <li>
-      <div class="talk-main">
-        <a href="notes/talks/norm-maps-tate.pdf">
-         Stefanich rings
-        </a>
-      </div>
+        <li>
+          <div class="talk-main">
+            <a href="notes/talks/stefanich-rings.pdf">Stefanich rings</a>
+          </div>
+          <div class="talk-meta">
+            <span class="meta">Gestalten Seminar,</span>
+            <span class="meta">University of Regensburg,</span>
+            <span class="meta gold">May 2025</span>
+          </div>
+        </li>
 
-      <div class="talk-meta">
-        <span class="meta">Gestalten Seminar,</span>
-        <span class="meta">University of Regensburg,</span>
-        <span class="meta gold">May 2025</span>
-        <span class="meta">
-        </span>
-      </div>
-    </li>
+        <li>
+          <div class="talk-main">
+            <a href="notes/talks/balmer-spectrum.pdf">Tensor triangulated geometry and the Balmer spectrum</a>
+          </div>
+          <div class="talk-meta">
+            <span class="meta">Higher Zariski Geometry Seminar,</span>
+            <span class="meta">University of Regensburg,</span>
+            <span class="meta gold">May 2025</span>
+          </div>
+        </li>
 
-    <li>
-      <div class="talk-main">
-        <a href="notes/talks/norm-maps-tate.pdf">
-          Tensor triangulated geometry and the Balmer spectrum
-        </a>
-        
-      </div>
-      <div class="talk-meta">
-  <span class="meta">Higher Zariski Geometry Seminar,</span><span class="meta">University of Regensburg,</span><span class="meta gold">May 2025</span>
-</div>
-    </li>
-
-  </ul>
-</section>
+      </ul>
+    </section>
 
     <footer class="footer">
       © 2026 Yiming Wang
@@ -98,3 +138,4 @@
   </main>
 </body>
 </html>
+
