@@ -1,39 +1,48 @@
 /* ---------- Color System ---------- */
+
 :root {
   /* neutrals */
-  --bg: #f9fbfd;          /* very light blue-white */
-  --paper: #ffffff;       /* content surface */
-  --text: #2b2b2b;        /* main text */
-  --muted: #6b7280;       /* secondary text */
-  --line: #e6eaf0;        /* separators */
+  --bg: #f9fbfd;
+  --paper: #ffffff;
+  --text: #2b2b2b;
+  --muted: #6b7280;
+  --line: #e6eaf0;
   --shadow: rgba(17, 24, 39, 0.04);
 
   /* accents */
-  --blue: #b8d9f0;        /* baby blue */
-  --blue-deep: #7fb3d5;   /* link hover / focus */
-  --purple: #7a6c9d;      /* section headings */
-  --gold: #c2a86d;        /* meta highlight */
+  --blue: #b8d9f0;
+  --blue-deep: #7fb3d5;
+  --purple: #7a6c9d;
+  --gold: #c2a86d;
 
   /* sizes */
   --maxw: 760px;
   --padx: 22px;
 }
 
+
 /* ---------- Reset / Base ---------- */
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-html, body {
-  height: 100%;
+html,
+body {
+  min-height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
+
   font-family:
     ui-sans-serif,
     system-ui,
@@ -44,37 +53,57 @@ body {
     "Helvetica Neue",
     Arial,
     sans-serif;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
-/* A very subtle MUJI-like “paper” gradient */
+
+/* Subtle paper-like background */
+
 body::before {
   content: "";
   position: fixed;
   inset: 0;
+
   background:
-    radial-gradient(1200px 600px at 20% 10%, rgba(184, 217, 240, 0.28), transparent 60%),
-    radial-gradient(900px 500px at 85% 0%, rgba(184, 217, 240, 0.16), transparent 55%),
-    linear-gradient(to bottom, rgba(255,255,255,0.65), rgba(255,255,255,0.35));
+    radial-gradient(
+      1200px 600px at 20% 10%,
+      rgba(184, 217, 240, 0.28),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 500px at 85% 0%,
+      rgba(184, 217, 240, 0.16),
+      transparent 55%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.68),
+      rgba(255, 255, 255, 0.35)
+    );
+
   pointer-events: none;
   z-index: -1;
 }
 
+
 /* ---------- Layout ---------- */
+
 .container {
   max-width: var(--maxw);
   margin: 0 auto;
   padding: 96px var(--padx) 72px;
 }
 
-/* Optional: if you wrap content in <main>, keep it centered */
 main {
   display: block;
 }
 
+
 /* ---------- Links ---------- */
+
 a {
   color: inherit;
   text-decoration: none;
@@ -90,7 +119,9 @@ a:focus-visible {
   border-radius: 4px;
 }
 
-/* For long-form text links (inside paragraphs) */
+
+/* Long-form paragraph links */
+
 .section p a {
   color: var(--text);
   border-bottom: 1px solid rgba(127, 179, 213, 0.45);
@@ -102,7 +133,9 @@ a:focus-visible {
   border-bottom-color: rgba(127, 179, 213, 0.75);
 }
 
+
 /* ---------- Navigation ---------- */
+
 .header {
   margin-bottom: 72px;
 }
@@ -111,6 +144,7 @@ a:focus-visible {
   display: flex;
   flex-wrap: wrap;
   gap: 18px;
+
   font-size: 14px;
   color: var(--muted);
 }
@@ -124,31 +158,33 @@ a:focus-visible {
   color: var(--purple);
 }
 
-/* Optional "active" class if you add it later:
-   <a class="active" ...> */
 .nav a.active {
   color: var(--text);
-  border-bottom: 1px solid rgba(194, 168, 109, 0.7);
+  border-bottom: 1px solid rgba(194, 168, 109, 0.75);
 }
 
+
 /* ---------- Hero ---------- */
+
 .hero h1 {
-  font-size: 38px;
-  font-weight: 520;
-  margin: 0 0 12px;
-  letter-spacing: 0.2px;
+  font-size: 36px;
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: 0.1px;
 }
 
 .tagline {
-  margin: 0;
+  margin: 12px 0 0;
   color: var(--muted);
   line-height: 1.85;
   max-width: 52ch;
 }
 
+
 /* ---------- Sections ---------- */
+
 .section {
-  margin-top: 64px;
+  margin-top: 56px;
 }
 
 .section h2 {
@@ -156,6 +192,7 @@ a:focus-visible {
   font-weight: 650;
   text-transform: uppercase;
   letter-spacing: 0.10em;
+
   color: var(--purple);
   margin: 0 0 18px;
 }
@@ -167,42 +204,128 @@ a:focus-visible {
   max-width: 68ch;
 }
 
-/* Subtle paragraph spacing if you add multiple <p> later */
 .section p + p {
   margin-top: 14px;
 }
 
+
 /* ---------- Lists ---------- */
+
 .list {
   list-style: none;
   padding: 0;
   margin: 0;
+
   border-top: 1px solid var(--line);
 }
 
 .list li {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 16px;
-  padding: 14px 0;
   border-bottom: 1px solid var(--line);
 }
 
-.list li a {
-  color: var(--text);
-}
-
-.list li a:hover {
-  color: var(--blue-deep);
-}
-
-/* When list items wrap on small screens */
 .list li > *:first-child {
   min-width: 0;
 }
 
+
+/* ---------- Talks List ---------- */
+
+.talks-list {
+  border-top: 1px solid var(--line);
+}
+
+.list li.talk {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.9fr);
+  column-gap: 28px;
+  align-items: baseline;
+
+  padding: 18px 0;
+}
+
+
+/* Talk title */
+
+.list li.talk .talk-title {
+  display: block;
+
+  color: var(--text);
+  font-size: 15.5px;
+  font-weight: 420;
+  line-height: 1.45;
+
+  min-width: 0;
+}
+
+
+/* Metadata column */
+
+.list li.talk .meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.45em;
+
+  text-align: right;
+  line-height: 1.55;
+}
+
+.list li.talk .meta {
+  font-size: 13.5px;
+  color: var(--muted);
+  white-space: normal;
+}
+
+.list li.talk .meta.gold {
+  color: var(--gold);
+  font-weight: 430;
+}
+
+
+/* Prevent text shining / changing color when scrolling or hovering */
+
+.list li.talk,
+.list li.talk *,
+.list li.talk:hover,
+.list li.talk:hover *,
+.list li.talk:focus,
+.list li.talk:focus *,
+.list li.talk:active,
+.list li.talk:active * {
+  transition: none !important;
+  animation: none !important;
+  text-shadow: none !important;
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+.list li.talk:hover .talk-title,
+.list li.talk .talk-title:hover {
+  color: var(--text) !important;
+}
+
+.list li.talk:hover .meta,
+.list li.talk .meta:hover {
+  color: var(--muted) !important;
+}
+
+.list li.talk:hover .meta.gold,
+.list li.talk .meta.gold:hover {
+  color: var(--gold) !important;
+}
+
+.list li.talk a,
+.list li.talk a:visited,
+.list li.talk a:hover,
+.list li.talk a:focus,
+.list li.talk a:active {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+
 /* ---------- Meta ---------- */
+
 .meta {
   font-size: 13px;
   color: var(--muted);
@@ -213,7 +336,6 @@ a:focus-visible {
   color: var(--gold);
 }
 
-/* Optional subtle pill style for meta, MUJI-ish */
 .meta.pill {
   padding: 2px 8px;
   border: 1px solid rgba(230, 234, 240, 0.95);
@@ -221,15 +343,25 @@ a:focus-visible {
   background: rgba(255, 255, 255, 0.65);
 }
 
+
 /* ---------- Small UI Elements ---------- */
+
 hr {
   border: 0;
   border-top: 1px solid var(--line);
   margin: 28px 0;
 }
 
-code, pre {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "JetBrains Mono", monospace;
+code,
+pre {
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    "JetBrains Mono",
+    monospace;
 }
 
 pre {
@@ -240,14 +372,18 @@ pre {
   background: rgba(255, 255, 255, 0.7);
 }
 
+
 /* ---------- Footer ---------- */
+
 .footer {
   margin-top: 80px;
   font-size: 13px;
   color: var(--muted);
 }
 
+
 /* ---------- Responsive ---------- */
+
 @media (max-width: 640px) {
   .container {
     padding: 72px 18px 56px;
@@ -255,6 +391,10 @@ pre {
 
   .header {
     margin-bottom: 56px;
+  }
+
+  .nav {
+    gap: 16px;
   }
 
   .hero h1 {
@@ -265,10 +405,19 @@ pre {
     margin-top: 52px;
   }
 
-  .list li {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 6px;
+  .list li.talk {
+    grid-template-columns: 1fr;
+    row-gap: 6px;
+    padding: 16px 0;
+  }
+
+  .list li.talk .meta-row {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .list li.talk .talk-title {
+    font-size: 15px;
   }
 
   .meta {
@@ -276,44 +425,16 @@ pre {
   }
 }
 
-/* ---------- Reduced motion ---------- */
+
+/* ---------- Reduced Motion ---------- */
+
 @media (prefers-reduced-motion: reduce) {
-  * {
+  *,
+  *::before,
+  *::after {
     scroll-behavior: auto !important;
+    transition: none !important;
+    animation: none !important;
   }
 }
-/* ---------- Talks: match list style, align meta cleanly ---------- */
-
-/* Keep li as your existing two-column flex row. We only refine the right column. */
-.list li.talk {
-  /* inherits: display:flex; justify-content:space-between; align-items:baseline; gap:16px; */
-}
-
-/* Title behaves like your other list links */
-.list li.talk .talk-title {
-  color: var(--text);
-  min-width: 0;             /* allows wrapping in flex context */
-}
-
-.list li.talk .talk-title:hover {
-  color: var(--blue-deep);
-}
-
-/* Meta row: controlled spacing, no whitespace artifacts */
-.list li.talk .meta-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end; /* right-align within the right column */
-  gap: 0.45em;               /* consistent spacing between meta chunks */
-  text-align: right;
-}
-
-/* On small screens your list li already becomes column; make meta behave nicely */
-@media (max-width: 640px) {
-  .list li.talk .meta-row {
-    justify-content: flex-start;
-    text-align: left;
-  }
-}
-
 
