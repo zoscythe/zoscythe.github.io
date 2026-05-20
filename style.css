@@ -296,7 +296,7 @@ pre {
 }
 
 .list li.talk .talk-title:hover {
-  color: var(--blue-deep);
+  color: var(--text);
 }
 
 /* Meta row: controlled spacing, no whitespace artifacts */
