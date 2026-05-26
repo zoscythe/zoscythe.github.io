@@ -320,22 +320,26 @@ pre {
 
 .hero-with-photo {
   display: flex;
-  align-items: center;
+  align-items: flex-start;      /* 让右侧照片块和左侧文字顶部对齐 */
   justify-content: space-between;
   gap: 48px;
+}
+
+.hero-text h1 {
+  margin-top: 0;
 }
 
 .profile-block {
   margin: 0;
   text-align: center;
   flex: 0 0 auto;
-  transform: translateY(90px);
+  transform: none;              /* 删除之前的向下移动 */
 }
 
 .profile-photo {
   display: block;
-  width: 300px;
-  height: 300px;
+  width: 340px;                 /* 照片变小 */
+  height: 340px;
   object-fit: cover;
   border-radius: 30px;
   box-shadow: 0 18px 50px rgba(17, 24, 39, 0.08);
@@ -354,11 +358,6 @@ pre {
     flex-direction: column;
     align-items: flex-start;
     gap: 32px;
-  }
-
-  .profile-block {
-    transform: none;
-    margin-top: 16px;
   }
 
   .profile-photo {
