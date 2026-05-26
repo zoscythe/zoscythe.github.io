@@ -316,18 +316,57 @@ pre {
   }
 }
 
+/* Home page photo */
+
 .hero-with-photo {
   display: flex;
-  align-items: flex-start;   /* 关键：让照片上沿和文字块上沿对齐 */
+  align-items: center;
   justify-content: space-between;
   gap: 48px;
-}
-
-.hero-text h1 {
-  margin-top: 0;
 }
 
 .profile-block {
   margin: 0;
   text-align: center;
+  flex: 0 0 auto;
+  transform: translateY(90px);
+}
+
+.profile-photo {
+  display: block;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 30px;
+  box-shadow: 0 18px 50px rgba(17, 24, 39, 0.08);
+}
+
+.profile-block figcaption {
+  margin-top: 18px;
+  font-size: 20px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+/* Mobile layout */
+@media (max-width: 760px) {
+  .hero-with-photo {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  .profile-block {
+    transform: none;
+    margin-top: 16px;
+  }
+
+  .profile-photo {
+    width: 260px;
+    height: 260px;
+  }
+
+  .profile-block figcaption {
+    font-size: 16px;
+  }
 }
